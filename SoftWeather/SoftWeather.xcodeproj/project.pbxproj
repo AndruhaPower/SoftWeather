@@ -14,6 +14,11 @@
 		490CBF0E23AA2C1900EBD013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490CBF0D23AA2C1900EBD013 /* Assets.xcassets */; };
 		490CBF1123AA2C1900EBD013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490CBF0F23AA2C1900EBD013 /* LaunchScreen.storyboard */; };
 		490CBF1C23AA2C1900EBD013 /* SoftWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490CBF1B23AA2C1900EBD013 /* SoftWeatherTests.swift */; };
+		490CBF2823AA355200EBD013 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490CBF2723AA355200EBD013 /* MainView.swift */; };
+		495C0E6D23AA5B9000440CA5 /* LoadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E6C23AA5B9000440CA5 /* LoadImageOperation.swift */; };
+		495C0E6F23AA5BBE00440CA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E6E23AA5BBE00440CA5 /* Constants.swift */; };
+		495C0E7423AAD45800440CA5 /* AdditionalDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E7323AAD45800440CA5 /* AdditionalDataTableViewCell.swift */; };
+		495C0E7623AAE15F00440CA5 /* AdditionalDataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E7523AAE15F00440CA5 /* AdditionalDataTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,11 @@
 		490CBF1723AA2C1900EBD013 /* SoftWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		490CBF1B23AA2C1900EBD013 /* SoftWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftWeatherTests.swift; sourceTree = "<group>"; };
 		490CBF1D23AA2C1900EBD013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		490CBF2723AA355200EBD013 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		495C0E6C23AA5B9000440CA5 /* LoadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageOperation.swift; sourceTree = "<group>"; };
+		495C0E6E23AA5BBE00440CA5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		495C0E7323AAD45800440CA5 /* AdditionalDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDataTableViewCell.swift; sourceTree = "<group>"; };
+		495C0E7523AAE15F00440CA5 /* AdditionalDataTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDataTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +91,9 @@
 			children = (
 				490CBF0123AA2C1700EBD013 /* AppDelegate.swift */,
 				490CBF0323AA2C1700EBD013 /* SceneDelegate.swift */,
-				490CBF0523AA2C1700EBD013 /* MainViewController.swift */,
+				495C0E6C23AA5B9000440CA5 /* LoadImageOperation.swift */,
+				495C0E6E23AA5BBE00440CA5 /* Constants.swift */,
+				490CBF2623AA31AF00EBD013 /* MainScreen */,
 				490CBF0D23AA2C1900EBD013 /* Assets.xcassets */,
 				490CBF0F23AA2C1900EBD013 /* LaunchScreen.storyboard */,
 				490CBF1223AA2C1900EBD013 /* Info.plist */,
@@ -97,6 +109,17 @@
 				490CBF1D23AA2C1900EBD013 /* Info.plist */,
 			);
 			path = SoftWeatherTests;
+			sourceTree = "<group>";
+		};
+		490CBF2623AA31AF00EBD013 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				490CBF0523AA2C1700EBD013 /* MainViewController.swift */,
+				490CBF2723AA355200EBD013 /* MainView.swift */,
+				495C0E7323AAD45800440CA5 /* AdditionalDataTableViewCell.swift */,
+				495C0E7523AAE15F00440CA5 /* AdditionalDataTableView.swift */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +225,11 @@
 				490CBF0C23AA2C1700EBD013 /* SoftWeather.xcdatamodeld in Sources */,
 				490CBF0623AA2C1700EBD013 /* MainViewController.swift in Sources */,
 				490CBF0223AA2C1700EBD013 /* AppDelegate.swift in Sources */,
+				495C0E7623AAE15F00440CA5 /* AdditionalDataTableView.swift in Sources */,
+				495C0E7423AAD45800440CA5 /* AdditionalDataTableViewCell.swift in Sources */,
+				495C0E6D23AA5B9000440CA5 /* LoadImageOperation.swift in Sources */,
+				495C0E6F23AA5BBE00440CA5 /* Constants.swift in Sources */,
+				490CBF2823AA355200EBD013 /* MainView.swift in Sources */,
 				490CBF0423AA2C1700EBD013 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
