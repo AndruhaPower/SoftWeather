@@ -17,8 +17,6 @@
 		490CBF2823AA355200EBD013 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490CBF2723AA355200EBD013 /* MainView.swift */; };
 		495C0E6D23AA5B9000440CA5 /* LoadImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E6C23AA5B9000440CA5 /* LoadImageOperation.swift */; };
 		495C0E6F23AA5BBE00440CA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E6E23AA5BBE00440CA5 /* Constants.swift */; };
-		495C0E7423AAD45800440CA5 /* AdditionalDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E7323AAD45800440CA5 /* AdditionalDataTableViewCell.swift */; };
-		495C0E7623AAE15F00440CA5 /* AdditionalDataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495C0E7523AAE15F00440CA5 /* AdditionalDataTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +44,6 @@
 		490CBF2723AA355200EBD013 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		495C0E6C23AA5B9000440CA5 /* LoadImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImageOperation.swift; sourceTree = "<group>"; };
 		495C0E6E23AA5BBE00440CA5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		495C0E7323AAD45800440CA5 /* AdditionalDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDataTableViewCell.swift; sourceTree = "<group>"; };
-		495C0E7523AAE15F00440CA5 /* AdditionalDataTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalDataTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +112,6 @@
 			children = (
 				490CBF0523AA2C1700EBD013 /* MainViewController.swift */,
 				490CBF2723AA355200EBD013 /* MainView.swift */,
-				495C0E7323AAD45800440CA5 /* AdditionalDataTableViewCell.swift */,
-				495C0E7523AAE15F00440CA5 /* AdditionalDataTableView.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -225,8 +219,6 @@
 				490CBF0C23AA2C1700EBD013 /* SoftWeather.xcdatamodeld in Sources */,
 				490CBF0623AA2C1700EBD013 /* MainViewController.swift in Sources */,
 				490CBF0223AA2C1700EBD013 /* AppDelegate.swift in Sources */,
-				495C0E7623AAE15F00440CA5 /* AdditionalDataTableView.swift in Sources */,
-				495C0E7423AAD45800440CA5 /* AdditionalDataTableViewCell.swift in Sources */,
 				495C0E6D23AA5B9000440CA5 /* LoadImageOperation.swift in Sources */,
 				495C0E6F23AA5BBE00440CA5 /* Constants.swift in Sources */,
 				490CBF2823AA355200EBD013 /* MainView.swift in Sources */,
