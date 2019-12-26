@@ -11,29 +11,45 @@ import UIKit
 
 class MainView: UIView {
     
+    var backgroundImageView = UIImageView()
     var scrollView = UIScrollView()
     
     var timeLabel = UILabel()
     var locationLabel = UILabel()
     var settingsButton = UIButton()
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     var mainTemperatureLabel = UILabel()
     var descriptionLabel = UILabel()
     var minTempLabel = UILabel()
     var maxTempLabel = UILabel()
+    var collectionView = AdditionalDataCollectionView()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.setupActivityIndicator()
         self.setupView()
-        self.setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstraints() {
+    private func setupView() {
+        self.backgroundColor = .white
+        
+        self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(backgroundImageView)
+        
+        self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        self.backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        self.backgroundImageView.contentMode = .scaleAspectFill
+        self.backgroundImageView.alpha = 0.7
         
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.scrollView)
@@ -53,7 +69,6 @@ class MainView: UIView {
         
         self.timeLabel.textColor = .black
         self.timeLabel.font = self.getFontSTHeitiTC(with: 20)
-        self.timeLabel.text = "16:00" // testText
         
         self.settingsButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.settingsButton)
@@ -72,7 +87,6 @@ class MainView: UIView {
         
         self.locationLabel.textColor = .black
         self.locationLabel.font = self.getFontSTHeitiTC(with: 25)
-        self.locationLabel.text = "Москва" // testText
         
         self.mainTemperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.mainTemperatureLabel)
@@ -85,7 +99,6 @@ class MainView: UIView {
         
         self.mainTemperatureLabel.textAlignment = .center
         self.mainTemperatureLabel.font = self.getFontSTHeitiTC(with: 150)
-        self.mainTemperatureLabel.text = "3" // testText
         
         self.minTempLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.minTempLabel)
@@ -98,7 +111,6 @@ class MainView: UIView {
         
         self.minTempLabel.textAlignment = .center
         self.minTempLabel.font = getFontSTHeitiTC(with: 30)
-        self.minTempLabel.text = "0" // testText
         
         self.maxTempLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.maxTempLabel)
@@ -109,7 +121,6 @@ class MainView: UIView {
         
         self.maxTempLabel.textAlignment = .center
         self.maxTempLabel.font = self.getFontSTHeitiTC(with: 30)
-        self.maxTempLabel.text = "6" // testText
         
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.descriptionLabel)
@@ -118,12 +129,24 @@ class MainView: UIView {
         self.descriptionLabel.centerXAnchor.constraint(equalTo: self.mainTemperatureLabel.centerXAnchor).isActive = true
         
         self.descriptionLabel.font = getFontSTHeitiTC(with: 20)
-        self.descriptionLabel.text = "Облачно, солнце"
         
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.collectionView)
+        
+        self.collectionView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 15).isActive = true
+        self.collectionView.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
+        self.collectionView.rightAnchor.constraint(equalTo: guide.rightAnchor).isActive = true
+        self.collectionView.heightAnchor.constraint(equalToConstant: 140).isActive = true //hardcode Constraint 2xCellHeight
     }
     
-    private func setupView() {
-        self.backgroundColor = .white
+    private func setupActivityIndicator() {
+        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.activityIndicator)
+
+        self.activityIndicator.center = self.center
+        self.activityIndicator.color = .black
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.style = .medium
     }
     
     private func getFontSTHeitiTC(with size: CGFloat) -> UIFont {
