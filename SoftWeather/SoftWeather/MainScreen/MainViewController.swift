@@ -32,18 +32,20 @@ class MainViewController: UIViewController {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.startUpdatingLocation()
     }
     
     private func getWeatherForecast() {
-        DispatchQueue.main.async {
-            self.weatherServices.getWeatherForCity { (forecasts) in
-                self.forecasts = forecasts
+        DispatchQueue.main.async { [weak self] in
+            self?.weatherServices.getWeatherForCity { (forecasts) in
                 
-                if let abbr = self.forecasts.first?.weatherStateShort {
-                    self.defineBackGroundPic(abbr: abbr)
+                self?.forecasts = forecasts
+                
+                if let abbr = self?.forecasts.first?.weatherState {
+                    self?.defineBackGroundPic(abbr: abbr)
                 }
                 DispatchQueue.main.async {
-                    self.setupDataForView()
+                    self?.setupDataForView()
                 }
             }
         }
@@ -72,12 +74,13 @@ class MainViewController: UIViewController {
         self.customView.mainTemperatureLabel.text = todayForecast.theTemp
         self.customView.minTempLabel.text = todayForecast.minTemp
         self.customView.maxTempLabel.text = todayForecast.maxTemp
-        self.customView.descriptionLabel.text = todayForecast.weatherState
+        self.customView.descriptionLabel.text = todayForecast.weatherState.title
         self.customView.timeLabel.text = date
         
         self.customView.collectionView.itemsToDisplay = setupCollectionViewItems(forecast: todayForecast)
         
         self.view = customView
+
         
         let operation = LoadImageOperation()
         operation.url = URL(string: Constants.urlForBackGround)
@@ -112,7 +115,7 @@ class MainViewController: UIViewController {
 
 
 extension MainViewController: CLLocationManagerDelegate {
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
             if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
@@ -120,6 +123,11 @@ extension MainViewController: CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
 }
 
@@ -139,30 +147,30 @@ extension MainViewController {
         return image
     }
     
-    private func defineBackGroundPic(abbr: String) {
-        switch abbr {
-        case "sn":
-            Constants.urlForBackGround = "https://i.pinimg.com/474x/31/eb/53/31eb53ad218875c064b713747da07609.jpg"
-        case "sl":
-            Constants.urlForBackGround = "https://i.pinimg.com/474x/31/eb/53/31eb53ad218875c064b713747da07609.jpg"
-        case "h":
-            Constants.urlForBackGround = "http://4.bp.blogspot.com/-gTznWBeTVX8/UUUZEdvBjKI/AAAAAAAAAQ0/kllf_sD6m7o/s1600/hailstorm.jpg"
-        case "t":
-            Constants.urlForBackGround = "https://i.pinimg.com/originals/00/b1/7b/00b17b62b06bb0482cca51297215c951.jpg"
-        case "hr":
-            Constants.urlForBackGround = "https://i.pinimg.com/736x/6f/5a/c2/6f5ac2c82451158822a4e4085bee4f44.jpg"
-        case "lr":
-            Constants.urlForBackGround = "https://i.pinimg.com/originals/47/ec/27/47ec27a521be96d170ddad9257866873.jpg"
-        case "s":
-            Constants.urlForBackGround = "https://i.pinimg.com/736x/6f/5a/c2/6f5ac2c82451158822a4e4085bee4f44.jpg"
-        case "hc":
-            Constants.urlForBackGround = "https://www.elsetge.cat/myimg/f/152-1520158_dark-storm-clouds-iphone-x-wallpaper-storm-cloud.jpg"
-        case "lc":
-            Constants.urlForBackGround = "https://i.pinimg.com/originals/ea/22/1f/ea221f88682cb01be8bdd56bc3f1fc57.jpg"
-        case "c":
-            Constants.urlForBackGround = "https://media.istockphoto.com/photos/sky-vertical-picture-id151526869?k=6&m=151526869&s=170667a&w=0&h=JhFhnmkq6fMTSSxXZiKHhrf-e_zA3zKczfqqsY_-_ss="
-        default:
-           print("image has not been set, error occured")
-        }
+    private func defineBackGroundPic(abbr: WeatherState) {
+//        switch abbr {
+//        case "sn":
+//            Constants.urlForBackGround = "https://i.pinimg.com/474x/31/eb/53/31eb53ad218875c064b713747da07609.jpg"
+//        case "sl":
+//            Constants.urlForBackGround = "https://i.pinimg.com/474x/31/eb/53/31eb53ad218875c064b713747da07609.jpg"
+//        case "h":
+//            Constants.urlForBackGround = "http://4.bp.blogspot.com/-gTznWBeTVX8/UUUZEdvBjKI/AAAAAAAAAQ0/kllf_sD6m7o/s1600/hailstorm.jpg"
+//        case "t":
+//            Constants.urlForBackGround = "https://i.pinimg.com/originals/00/b1/7b/00b17b62b06bb0482cca51297215c951.jpg"
+//        case "hr":
+//            Constants.urlForBackGround = "https://i.pinimg.com/736x/6f/5a/c2/6f5ac2c82451158822a4e4085bee4f44.jpg"
+//        case "lr":
+//            Constants.urlForBackGround = "https://i.pinimg.com/originals/47/ec/27/47ec27a521be96d170ddad9257866873.jpg"
+//        case "s":
+//            Constants.urlForBackGround = "https://i.pinimg.com/736x/6f/5a/c2/6f5ac2c82451158822a4e4085bee4f44.jpg"
+//        case "hc":
+//            Constants.urlForBackGround = "https://www.elsetge.cat/myimg/f/152-1520158_dark-storm-clouds-iphone-x-wallpaper-storm-cloud.jpg"
+//        case "lc":
+//            Constants.urlForBackGround = "https://i.pinimg.com/originals/ea/22/1f/ea221f88682cb01be8bdd56bc3f1fc57.jpg"
+//        case "c":
+//            Constants.urlForBackGround = "https://media.istockphoto.com/photos/sky-vertical-picture-id151526869?k=6&m=151526869&s=170667a&w=0&h=JhFhnmkq6fMTSSxXZiKHhrf-e_zA3zKczfqqsY_-_ss="
+//        default:
+//           print("image has not been set, error occured")
+//        }
     }
 }

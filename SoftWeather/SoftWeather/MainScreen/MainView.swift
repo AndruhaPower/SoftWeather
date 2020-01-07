@@ -39,6 +39,7 @@ class MainView: UIView {
     
     private func setupView() {
         self.backgroundColor = .white
+        let guide = scrollView.safeAreaLayoutGuide
         
         self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(backgroundImageView)
@@ -46,14 +47,13 @@ class MainView: UIView {
         self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.backgroundImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        self.backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.backgroundImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 10).isActive = true
         
         self.backgroundImageView.contentMode = .scaleAspectFill
         self.backgroundImageView.alpha = 0.7
         
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.scrollView)
-        let guide = scrollView.safeAreaLayoutGuide
         
         self.scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
@@ -92,10 +92,10 @@ class MainView: UIView {
         self.scrollView.addSubview(self.mainTemperatureLabel)
         
         // TODO: LABEL SIZE
-  
+        
         self.mainTemperatureLabel.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 40).isActive = true
         self.mainTemperatureLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        self.mainTemperatureLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        self.mainTemperatureLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.5).isActive = true
         
         self.mainTemperatureLabel.textAlignment = .center
         self.mainTemperatureLabel.font = self.getFontSTHeitiTC(with: 150)

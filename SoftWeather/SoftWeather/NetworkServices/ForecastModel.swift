@@ -19,7 +19,6 @@ struct ForecastModel {
     static let mphToMps: Float = 0.44704
     
     var id: Int
-    var weatherStateShort: String
     var minTemp: String
     var maxTemp: String
     var theTemp: String
@@ -29,39 +28,14 @@ struct ForecastModel {
     var humidity: String
     var visibility: String
     var predictability: String
-    var weatherState: String {
-        switch weatherStateShort {
-        case "sn":
-            return "Снег"
-        case "sl":
-            return "Дождь со снегом"
-        case "h":
-            return "Град"
-        case "t":
-            return "Гроза"
-        case "hr":
-            return "Сильный дождь"
-        case "lr":
-            return "Небольшой дождь"
-        case "s":
-            return "Ливень"
-        case "hc":
-            return "Сильная облачность"
-        case "lc":
-            return "Небольшая облачность"
-        case "c":
-            return "Ясно"
-        default:
-            return "UNKNOWN WEATHER ABBR"
-        }
-    }
-    
+    var weatherState: WeatherState
+
     init(json: JSON, forecast: JSON) {
         let parent = json["parent"]
         self.parent = CityModel(title: parent["title"].stringValue, woeid: parent["woeid"].intValue, type: parent["location_type"].stringValue)
         self.date = json["time"].stringValue
         self.id = forecast["id"].intValue
-        self.weatherStateShort = forecast["weather_state_abbr"].stringValue
+        self.weatherState = WeatherState(weatherAbbr: forecast["weather_state_abbr"].stringValue)
         self.minTemp = String(format: "%.1f", forecast["min_temp"].floatValue)
         self.maxTemp = String(format: "%.1f", forecast["max_temp"].floatValue)
         self.theTemp = String(Int(forecast["the_temp"].floatValue.rounded()))

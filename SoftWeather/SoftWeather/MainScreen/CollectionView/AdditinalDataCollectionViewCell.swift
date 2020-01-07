@@ -43,8 +43,8 @@ class AdditinalDataCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(self.imageView)
         
-        self.imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        self.imageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
         self.imageView.heightAnchor.constraint(equalToConstant: 70 * 0.6).isActive = true //хардкод 70-высота ячейки (CustomCollectionViewLayout)
         self.imageView.widthAnchor.constraint(equalToConstant: 202 * 0.208).isActive = true // хард код 202 - половина экрана 11ProMax
         
