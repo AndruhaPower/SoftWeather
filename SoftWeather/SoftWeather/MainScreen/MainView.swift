@@ -25,7 +25,7 @@ class MainView: UIView {
     var minTempLabel = UILabel()
     var maxTempLabel = UILabel()
     var collectionView = AdditionalDataCollectionView()
-    
+    var tableView = ForecastTableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,6 +59,7 @@ class MainView: UIView {
         self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        self.scrollView.isScrollEnabled = true
         
         self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(self.timeLabel)
@@ -128,7 +129,7 @@ class MainView: UIView {
         self.descriptionLabel.topAnchor.constraint(equalTo: self.mainTemperatureLabel.bottomAnchor).isActive = true
         self.descriptionLabel.centerXAnchor.constraint(equalTo: self.mainTemperatureLabel.centerXAnchor).isActive = true
         
-        self.descriptionLabel.font = getFontSTHeitiTC(with: 20)
+        self.descriptionLabel.font = getFontSTHeitiTC(with: 30)
         
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.collectionView)
@@ -137,6 +138,15 @@ class MainView: UIView {
         self.collectionView.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
         self.collectionView.rightAnchor.constraint(equalTo: guide.rightAnchor).isActive = true
         self.collectionView.heightAnchor.constraint(equalToConstant: 140).isActive = true //hardcode Constraint 2xCellHeight
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.tableView)
+
+        self.tableView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 15).isActive = true
+        self.tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
+        self.tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+        self.tableView.bottomAnchor.constraint(greaterThanOrEqualTo: guide.bottomAnchor).isActive = true
+        
     }
     
     private func setupActivityIndicator() {

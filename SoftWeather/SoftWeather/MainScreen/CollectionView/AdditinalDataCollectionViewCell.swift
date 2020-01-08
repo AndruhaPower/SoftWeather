@@ -18,7 +18,7 @@ class AdditinalDataCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
-    }()
+     }()
     
     var parameterLabel: UILabel = {
         let label = UILabel()
@@ -41,14 +41,13 @@ class AdditinalDataCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         
-        contentView.addSubview(self.imageView)
-        
+        self.contentView.addSubview(self.imageView)
         self.imageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10).isActive = true
         self.imageView.heightAnchor.constraint(equalToConstant: 70 * 0.6).isActive = true //хардкод 70-высота ячейки (CustomCollectionViewLayout)
         self.imageView.widthAnchor.constraint(equalToConstant: 202 * 0.208).isActive = true // хард код 202 - половина экрана 11ProMax
         
-        contentView.addSubview(self.parameterLabel)
+        self.contentView.addSubview(self.parameterLabel)
         self.parameterLabel.leftAnchor.constraint(equalTo: self.imageView.rightAnchor, constant: 15).isActive = true
         self.parameterLabel.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor).isActive = true
         self.parameterLabel.rightAnchor.constraint(greaterThanOrEqualTo: self.rightAnchor, constant: -15).isActive = true

@@ -12,8 +12,7 @@ import UIKit
 
 class AdditionalDataCollectionView: UICollectionView {
     
-    var itemsToDisplay: [String] = ["Test1", "Test2", "Test3", "Test4", "Test5", "Test6"]
-    let sectionCount: Int = 1
+    var itemsToDisplay: [String] = []
     let operationQueue = OperationQueue()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -31,6 +30,18 @@ class AdditionalDataCollectionView: UICollectionView {
         self.backgroundColor = .clear
         self.register(AdditinalDataCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         self.isScrollEnabled = false
+    }
+    
+    func setupCollectionViewItems(forecast: ForecastModel) {
+        var exitArray: [String] = []
+        exitArray.append(forecast.windSpeed)
+        exitArray.append(forecast.windDirectionCompass)
+        exitArray.append(forecast.airPressure)
+        exitArray.append(forecast.humidity)
+        exitArray.append(forecast.visibility)
+        exitArray.append(forecast.predictability)
+        self.itemsToDisplay = exitArray
+        self.reloadData()
     }
 }
 

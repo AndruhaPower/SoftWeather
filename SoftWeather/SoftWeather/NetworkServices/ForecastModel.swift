@@ -13,7 +13,7 @@ struct ForecastModel {
     
     var parent: CityModel
     var date: String
-    
+ 
     static let mbarToMMHG: Float = 0.775
     static let milesToKM: Float = 0.62
     static let mphToMps: Float = 0.44704
@@ -41,7 +41,7 @@ struct ForecastModel {
         self.theTemp = String(Int(forecast["the_temp"].floatValue.rounded()))
         self.windSpeed = String(format: "%.1f", forecast["wind_speed"].floatValue * ForecastModel.mphToMps) + " м/c"
         self.windDirectionCompass = forecast["wind_direction_compass"].stringValue
-        self.airPressure = String(forecast["air_pressure"].floatValue.rounded() * ForecastModel.mbarToMMHG) + " мм"
+        self.airPressure = String((forecast["air_pressure"].floatValue * ForecastModel.mbarToMMHG).rounded()) + " мм"
         self.humidity = String(forecast["humidity"].intValue) + " %"
         self.visibility = String((forecast["visibility"].floatValue / ForecastModel.milesToKM).rounded()) + " км"
         self.predictability = String(forecast["predictability"].intValue) + " %"

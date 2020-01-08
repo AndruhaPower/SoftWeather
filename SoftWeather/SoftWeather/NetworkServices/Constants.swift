@@ -14,6 +14,5 @@ class Constants {
     static let settingsImageURL: String = "https://img.icons8.com/ios-glyphs/60/000000/settings.png"
     static let url: String = "https://www.metaweather.com/api/location/"
     static let urlForQuery: String = "https://www.metaweather.com/api/location/search"
-    static var urlForBackGround: String = ""
 }
 
