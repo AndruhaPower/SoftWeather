@@ -30,6 +30,7 @@
 		498671BB23B10F5000E5EFA8 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498671BA23B10F5000E5EFA8 /* ForecastModel.swift */; };
 		498671BF23B11E8900E5EFA8 /* SingletonCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498671BE23B11E8900E5EFA8 /* SingletonCity.swift */; };
 		498ACC3323B525FF00A7E15F /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498ACC3223B525FF00A7E15F /* DateConverter.swift */; };
+		499E546023C78FE70044EDB7 /* NativeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E545F23C78FE70044EDB7 /* NativeExtensions.swift */; };
 		FEA47E3E8C77A18884D55BB9 /* Pods_SoftWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C1CE401A900E0AF4CBCB4C /* Pods_SoftWeather.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		498671BA23B10F5000E5EFA8 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
 		498671BE23B11E8900E5EFA8 /* SingletonCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SingletonCity.swift; path = ../NetworkServices/SingletonCity.swift; sourceTree = "<group>"; };
 		498ACC3223B525FF00A7E15F /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		499E545F23C78FE70044EDB7 /* NativeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeExtensions.swift; sourceTree = "<group>"; };
 		723A3E141886157673D0F0C2 /* Pods-SoftWeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftWeatherTests.debug.xcconfig"; path = "Target Support Files/Pods-SoftWeatherTests/Pods-SoftWeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		792A6244C58C67EC96B52A23 /* Pods-SoftWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftWeather.debug.xcconfig"; path = "Target Support Files/Pods-SoftWeather/Pods-SoftWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		843C1484AD5DFB06A614CEF5 /* Pods_SoftWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoftWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 				498ACC3223B525FF00A7E15F /* DateConverter.swift */,
 				495C0E6C23AA5B9000440CA5 /* LoadImageOperation.swift */,
 				494AC7A523B8C49D002C0F35 /* WeatherState.swift */,
+				499E545F23C78FE70044EDB7 /* NativeExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				490CBF0223AA2C1700EBD013 /* AppDelegate.swift in Sources */,
 				495C0E7A23ABA0B900440CA5 /* AdditionalDataCollectionView.swift in Sources */,
 				495C0E6D23AA5B9000440CA5 /* LoadImageOperation.swift in Sources */,
+				499E546023C78FE70044EDB7 /* NativeExtensions.swift in Sources */,
 				498671BF23B11E8900E5EFA8 /* SingletonCity.swift in Sources */,
 				495C0E6F23AA5BBE00440CA5 /* Constants.swift in Sources */,
 				4910FB0823ABB834000C1993 /* CityModel.swift in Sources */,

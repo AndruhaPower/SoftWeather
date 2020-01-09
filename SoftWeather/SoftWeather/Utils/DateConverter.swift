@@ -42,7 +42,7 @@ struct DateConverter {
         
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.locale = Locale(identifier: "ru_RU")
-        dateFormatterPrint.dateFormat = "EEEE, d MMMM"
+        dateFormatterPrint.dateFormat = "EE, d MMMM"
         
         var exitString = ""
         

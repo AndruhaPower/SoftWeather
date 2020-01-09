@@ -24,7 +24,7 @@ class ForecastTableViewCell: UITableViewCell {
     var dayLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "STHeitiTC-Light", size: 14)
+        label.font = UIFont(name: "STHeitiTC-Light", size: 17)
         label.textColor = .black
         return label
     }()
