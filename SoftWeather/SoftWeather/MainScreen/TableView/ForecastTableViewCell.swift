@@ -73,18 +73,18 @@ class ForecastTableViewCell: UITableViewCell {
         self.forecastIcon.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         self.contentView.addSubview(self.dayLabel)
-        self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: width * 0.15).isActive = true
+        self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: width * 0.05).isActive = true
         self.dayLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        self.dayLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        self.contentView.addSubview(self.maxTempLabel)
-        self.maxTempLabel.leadingAnchor.constraint(equalTo: self.dayLabel.trailingAnchor, constant: width * 0.3).isActive = true
-        self.maxTempLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        self.maxTempLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        self.dayLabel.widthAnchor.constraint(equalToConstant: width * 0.6).isActive = true
         
         self.contentView.addSubview(self.minTempLabel)
         self.minTempLabel.trailingAnchor.constraint(equalTo: self.forecastIcon.leadingAnchor, constant: -20).isActive = true
         self.minTempLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         self.minTempLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        self.contentView.addSubview(self.maxTempLabel)
+        self.maxTempLabel.trailingAnchor.constraint(equalTo: self.minTempLabel.leadingAnchor, constant: width * (-0.1)).isActive = true
+        self.maxTempLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        self.maxTempLabel.leadingAnchor.constraint(lessThanOrEqualTo: self.dayLabel.trailingAnchor, constant: 0).isActive = true
     }
 }

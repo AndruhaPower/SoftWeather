@@ -11,6 +11,13 @@ import UIKit
 
 class MainView: UIView {
     
+    var contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var backgroundImageView = UIImageView()
     var scrollView = UIScrollView()
     
@@ -21,6 +28,7 @@ class MainView: UIView {
     var activityIndicator = UIActivityIndicatorView()
     
     var mainTemperatureLabel = UILabel()
+    var weatherBackgroundIcon = UIImage()
     var descriptionLabel = UILabel()
     var minTempLabel = UILabel()
     var maxTempLabel = UILabel()
@@ -38,11 +46,12 @@ class MainView: UIView {
     }
     
     private func setupView() {
+        
         self.backgroundColor = .white
-        let guide = scrollView.safeAreaLayoutGuide
+        let guide = contentView.safeAreaLayoutGuide
         
         self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(backgroundImageView)
+        self.addSubview(self.backgroundImageView)
         
         self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -59,20 +68,27 @@ class MainView: UIView {
         self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        self.scrollView.isScrollEnabled = true
+        
+        self.addSubview(self.contentView)
+        
+        self.contentView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: 0).isActive = true
+        self.contentView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 0).isActive = true
+        self.contentView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: 0).isActive = true
+        self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: 0).isActive = true
+        self.contentView.backgroundColor = .clear
         
         self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(self.timeLabel)
+        self.contentView.addSubview(self.timeLabel)
         
         self.timeLabel.topAnchor.constraint(equalTo: guide.topAnchor, constant: 10).isActive = true
-        self.timeLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        self.timeLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.timeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         self.timeLabel.textColor = .black
         self.timeLabel.font = self.getFontSTHeitiTC(with: 20)
         
         self.settingsButton.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.settingsButton)
+        self.contentView.addSubview(self.settingsButton)
         
         self.settingsButton.topAnchor.constraint(equalTo: guide.topAnchor, constant: 10).isActive = true
         self.settingsButton.rightAnchor.constraint(equalTo: guide.rightAnchor, constant: -10).isActive = true
@@ -80,59 +96,59 @@ class MainView: UIView {
         self.settingsButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
 
         self.locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(self.locationLabel)
+        self.contentView.addSubview(self.locationLabel)
         
         self.locationLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 15).isActive = true
-        self.locationLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        self.locationLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.locationLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         self.locationLabel.textColor = .black
         self.locationLabel.font = self.getFontSTHeitiTC(with: 25)
         
         self.mainTemperatureLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.mainTemperatureLabel)
+        self.contentView.addSubview(self.mainTemperatureLabel)
         
         // TODO: LABEL SIZE
         
         self.mainTemperatureLabel.topAnchor.constraint(equalTo: self.locationLabel.bottomAnchor, constant: 40).isActive = true
-        self.mainTemperatureLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        self.mainTemperatureLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.5).isActive = true
+        self.mainTemperatureLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        self.mainTemperatureLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.5).isActive = true
         
         self.mainTemperatureLabel.textAlignment = .center
         self.mainTemperatureLabel.font = self.getFontSTHeitiTC(with: 150)
         
         self.minTempLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.minTempLabel)
+        self.contentView.addSubview(self.minTempLabel)
         
         // TODO: LABEL SIZE
 
         self.minTempLabel.centerYAnchor.constraint(equalTo: self.mainTemperatureLabel.centerYAnchor).isActive = true
         self.minTempLabel.rightAnchor.constraint(equalTo: self.mainTemperatureLabel.leftAnchor, constant: -30).isActive = true
-        self.minTempLabel.leftAnchor.constraint(lessThanOrEqualTo: self.scrollView.leftAnchor, constant: 30).isActive = true
+        self.minTempLabel.leftAnchor.constraint(lessThanOrEqualTo: self.contentView.leftAnchor, constant: 30).isActive = true
         
         self.minTempLabel.textAlignment = .center
-        self.minTempLabel.font = getFontSTHeitiTC(with: 30)
+        self.minTempLabel.font = self.getFontSTHeitiTC(with: 30)
         
         self.maxTempLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.maxTempLabel)
+        self.contentView.addSubview(self.maxTempLabel)
         
         self.maxTempLabel.centerYAnchor.constraint(equalTo: self.mainTemperatureLabel.centerYAnchor).isActive = true
         self.maxTempLabel.leftAnchor.constraint(equalTo: self.mainTemperatureLabel.rightAnchor, constant: 30).isActive = true
-        self.maxTempLabel.rightAnchor.constraint(lessThanOrEqualTo: self.scrollView.rightAnchor, constant: 30).isActive = true
+        self.maxTempLabel.rightAnchor.constraint(lessThanOrEqualTo: self.contentView.rightAnchor, constant: 30).isActive = true
         
         self.maxTempLabel.textAlignment = .center
         self.maxTempLabel.font = self.getFontSTHeitiTC(with: 30)
         
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.descriptionLabel)
+        self.contentView.addSubview(self.descriptionLabel)
         
         self.descriptionLabel.topAnchor.constraint(equalTo: self.mainTemperatureLabel.bottomAnchor).isActive = true
         self.descriptionLabel.centerXAnchor.constraint(equalTo: self.mainTemperatureLabel.centerXAnchor).isActive = true
         
-        self.descriptionLabel.font = getFontSTHeitiTC(with: 30)
+        self.descriptionLabel.font = self.getFontSTHeitiTC(with: 30)
         
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.collectionView)
+        self.contentView.addSubview(self.collectionView)
         
         self.collectionView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 15).isActive = true
         self.collectionView.leftAnchor.constraint(equalTo: guide.leftAnchor).isActive = true
@@ -140,12 +156,12 @@ class MainView: UIView {
         self.collectionView.heightAnchor.constraint(equalToConstant: 140).isActive = true //hardcode Constraint 2xCellHeight
         
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.tableView)
+        self.contentView.addSubview(self.tableView)
 
         self.tableView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 15).isActive = true
         self.tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
         self.tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(greaterThanOrEqualTo: guide.bottomAnchor).isActive = true
+        self.tableView.bottomAnchor.constraint(greaterThanOrEqualTo: guide.bottomAnchor, constant: 0).isActive = true
         
     }
     

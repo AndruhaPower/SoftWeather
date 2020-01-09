@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         guard let todayForecast = self.forecasts.first,
             let city = self.city else { return }
         
-        let date = DateConverter.getDate(from: todayForecast.date)
+        let date = DateConverter.getDate(from: todayForecast.date).capitalizingFirstLetter()
         
         self.customView.locationLabel.text = todayForecast.parent.title+" "+city.title
         self.customView.mainTemperatureLabel.text = todayForecast.theTemp
@@ -71,6 +71,7 @@ class MainViewController: UIViewController {
 
         let operation = LoadImageOperation()
         let operationTwo = LoadImageOperation()
+        
         operation.url = URL(string: todayForecast.weatherState.backgroundURL)
         operationTwo.url = URL(string: Constants.settingsImageURL)
         self.operationQueue.addOperations([operation, operationTwo], waitUntilFinished: false)

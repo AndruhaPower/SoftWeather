@@ -13,7 +13,8 @@ struct ForecastModel {
     
     var parent: CityModel
     var date: String
- 
+    var applicableDate: String
+    
     static let mbarToMMHG: Float = 0.775
     static let milesToKM: Float = 0.62
     static let mphToMps: Float = 0.44704
@@ -34,6 +35,7 @@ struct ForecastModel {
         let parent = json["parent"]
         self.parent = CityModel(title: parent["title"].stringValue, woeid: parent["woeid"].intValue, type: parent["location_type"].stringValue)
         self.date = json["time"].stringValue
+        self.applicableDate = forecast["applicable_date"].stringValue
         self.id = forecast["id"].intValue
         self.weatherState = WeatherState(weatherAbbr: forecast["weather_state_abbr"].stringValue)
         self.minTemp = String(format: "%.1f", forecast["min_temp"].floatValue)

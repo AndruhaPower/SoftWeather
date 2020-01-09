@@ -21,7 +21,7 @@ struct DateConverter {
         
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.locale = Locale(identifier: "ru_RU")
-        dateFormatterPrint.dateFormat = "EEEE, MMM d, HH:mm"
+        dateFormatterPrint.dateFormat = "EEEE, d MMMM"
         
         var exitString = ""
         
@@ -34,16 +34,15 @@ struct DateConverter {
     
     static func getDay(from string: String) -> String {
         
-        var temp = string
-            temp.removeLast(13)
+        let temp = string
         
-            let dateFormatterGetter = DateFormatter()
-            dateFormatterGetter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-
-            
-            let dateFormatterPrint = DateFormatter()
-            dateFormatterPrint.locale = Locale(identifier: "ru_RU")
-        dateFormatterPrint.dateFormat = "EEEE, MMM d"
+        let dateFormatterGetter = DateFormatter()
+        dateFormatterGetter.dateFormat = "YYYY-M-DD"
+        
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.locale = Locale(identifier: "ru_RU")
+        dateFormatterPrint.dateFormat = "EEEE, d MMMM"
         
         var exitString = ""
         

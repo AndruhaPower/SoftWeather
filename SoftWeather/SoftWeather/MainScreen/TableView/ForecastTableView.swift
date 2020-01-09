@@ -52,10 +52,16 @@ extension ForecastTableView: UITableViewDataSource, UITableViewDelegate {
         guard let cell = dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseId, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
         
         let forecast = self.itemsToDisplay[indexPath.row]
-        let date = forecast.date
-        let day = DateConverter.getDay(from: date)
+        let date = forecast.applicableDate
+        let day = DateConverter.getDay(from: date).capitalizingFirstLetter()
         
-        cell.dayLabel.text = day
+        switch indexPath.row {
+        case 0:
+            cell.dayLabel.text = "Сегодня"
+        default:
+            cell.dayLabel.text = day
+        }
+        
         cell.maxTempLabel.text = forecast.maxTemp
         cell.minTempLabel.text = forecast.minTemp
         cell.forecastIcon.image = forecast.weatherState.shortcutImage
